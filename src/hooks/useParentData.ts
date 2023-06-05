@@ -1,10 +1,14 @@
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {axiosGetRequest} from "../lib/axios";
+import {ParentDataProps} from "../types";
 
 export const useParentData = () => {
   const navigate = useNavigate();
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState<number>(0);
+  const [noOfPages, setNoOfPages] = useState<number>(0);
+  const [data, setData] = useState<ParentDataProps | null>(null);
+  const [currentPage, setCurrentPage] = useState<number>(0);
 
 
   useEffect(() => {
@@ -12,6 +16,11 @@ export const useParentData = () => {
       const response = await axiosGetRequest('/parent/paginate', {
         page
       })
+
+      if (response.data) {
+        setNoOfPages(Math.ceil(response.length / 2))
+        setData(response)
+      }
 
       console.log(response);
     }
@@ -25,5 +34,8 @@ export const useParentData = () => {
   return {
     // Values
     page,
+    noOfPages,
+    data,
+    currentPage,
   }
 }
