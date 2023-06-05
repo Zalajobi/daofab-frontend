@@ -25,15 +25,16 @@ const TableFooter = ({noOfPages, total, from, currentPage, onNext, to, onPreviou
           <p className="flex flex-col items-center gap-2 font-velasans-gx text-sm font-medium text-custom-description dark:text-ds-dark-300 sm:flex-row lg:whitespace-nowrap">
             The page you are on
             <div style={{ maxWidth: 100 }}>
-              <InputNumber
-                value={currentPage + 1}
-                className="flex h-10 w-12 rounded-md border border-ds-gray-300 px-3 py-1 text-end font-extrabold text-custom-primary-800 dark:border-ds-dark-400 dark:text-white items-center"
-                // defaultValue={currentPage + 1}
-                onChange={enterPageNumber}
-                max={noOfPages}
-                min={1}
-                scrollable={false}
-              />
+              {/*<InputNumber*/}
+              {/*  value={currentPage + 1}*/}
+              {/*  className="flex h-10 w-12 rounded-md border border-ds-gray-300 px-3 py-1 text-end font-extrabold text-custom-primary-800 dark:border-ds-dark-400 dark:text-white items-center"*/}
+              {/*  // defaultValue={currentPage + 1}*/}
+              {/*  onChange={enterPageNumber}*/}
+              {/*  max={noOfPages}*/}
+              {/*  min={1}*/}
+              {/*  scrollable={false}*/}
+              {/*/>*/}
+              {currentPage + 1}
             </div>
             of {noOfPages}
           </p>
