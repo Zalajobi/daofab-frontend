@@ -1,5 +1,7 @@
 import { Fragment } from "react"
 import {TbArrowsMoveVertical} from "react-icons/tb";
+import {ChildrenObject, ParentObject, ParentRowData} from "../../types";
+import {Link} from "react-router-dom";
 
 export const ParentDataColumn = () => {
   const columnItem = [
@@ -55,4 +57,47 @@ export const ParentDataColumn = () => {
   ]
 
   return columnItem
+}
+
+export const ParentDataRow = (data : ParentObject[]) => {
+  const rowItems:ParentRowData[] = [];
+
+  data?.map((item:ParentObject, idx:number) => {
+    rowItems.push({
+      id: <>
+        {item?.id}
+      </>,
+
+      sender: <>
+        {item?.sender}
+      </>,
+
+      receiver: <>
+        {item?.receiver}
+      </>,
+
+      total: <>
+        {item?.totalAmount}
+      </>,
+
+      paid:
+        <Link  to={`/parent/${item?.id}`} className={`text-black hover:text-gray-500 decoration-0`}>
+          <b className={`font-extrabold`}>{getTotalAmountsPaid(item.child)}</b>
+        </Link>,
+
+    })
+  })
+
+  return rowItems;
+}
+
+
+const getTotalAmountsPaid = (children: ChildrenObject[]) => {
+  let totalPaid = 0;
+
+  for (const item of children) {
+    totalPaid += item?.paidAmount;
+  }
+
+  return totalPaid;
 }

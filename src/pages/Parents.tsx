@@ -1,6 +1,8 @@
 import {Fragment, useMemo} from "react";
 import {useParentData} from "../hooks/useParentData";
-import {ParentDataColumn} from "../components/table/ParentTable";
+import {ParentDataColumn, ParentDataRow} from "../components/table/ParentTable";
+import {ParentObject} from "../types";
+import Table from "../components/global/table/Table";
 
 const Parents = () => {
   const {
@@ -10,9 +12,13 @@ const Parents = () => {
     currentPage,
   } = useParentData()
 
-  const columns = useMemo(
+  const tableColumns = useMemo(
     () => ParentDataColumn(),
     [page, currentPage, data])
+
+  const tableRow = useMemo(
+    () => ParentDataRow(data as ParentObject[]) ?? [],
+    [page, currentPage, data]);
 
   return (
     <Fragment>
@@ -21,7 +27,7 @@ const Parents = () => {
           <div
             className="relative overflow-x-auto overflow-y-auto max-h-screen shadow-lg flex flex-col rounded-lg border border-ds-gray-300 bg-white dark:border-ds-dark-400 dark:bg-ds-dark-700"
           >
-
+            <Table columns={tableColumns} data={tableRow}/>
           </div>
         </div>
       </div>

@@ -1,3 +1,5 @@
+import {ReactNode} from "react";
+
 export type ParentDataProps = {
   data: ParentObject[];
   length: number;
@@ -15,4 +17,12 @@ export type ParentObject = {
   sender: string;
   id: number;
   child: ChildrenObject[];
+}
+
+export interface ParentRowData {
+  id: ReactNode
+  sender: ReactNode
+  receiver: ReactNode
+  total: ReactNode
+  paid: ReactNode
 }
