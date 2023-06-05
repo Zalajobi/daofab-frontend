@@ -7,6 +7,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
+import Parents from "./pages/Parents";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -23,7 +24,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/parent',
-        element: <App/>
+        element: <Parents/>
       },
 
       {
