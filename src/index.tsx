@@ -2,14 +2,41 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App/>,
+  },
+
+  {
+    path: '/parent',
+    children: [
+      {
+        path: '/parent',
+        element: <App/>
+      },
+
+      {
+        path: '/parent/:id',
+        element: <App/>
+      },
+    ]
+  },
+]);
+
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
