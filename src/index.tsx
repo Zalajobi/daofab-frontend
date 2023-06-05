@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
 import Parents from "./pages/Parents";
+import Child from "./pages/Child";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -29,7 +30,7 @@ const router = createBrowserRouter([
 
       {
         path: '/parent/:id',
-        element: <App/>
+        element: <Child/>
       },
     ]
   },

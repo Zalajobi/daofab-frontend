@@ -16,7 +16,7 @@ export const useParentData = () => {
 
   useEffect(() => {
     const getParentData = async () => {
-      const response = await axiosGetRequest('/parent/paginate', {
+      const response = <ParentDataProps>await axiosGetRequest('/parent/paginate', {
         page: currentPage
       })
 
@@ -44,7 +44,7 @@ export const useParentData = () => {
       setResultFrom(((value) * 2) + 1)
       setResultTo((value + 1 === noOfPages) ? totalData : ((value) * 2) + 2)
 
-      const response = await axiosGetRequest('/parent/paginate', {
+      const response = <ParentDataProps>await axiosGetRequest('/parent/paginate', {
         page: value,
       })
 
@@ -64,7 +64,7 @@ export const useParentData = () => {
       setResultFrom(((value) * 2) + 1)
       setResultTo((value + 1 === noOfPages) ? totalData : ((value) * 2) + 2)
 
-      const response = await axiosGetRequest('/parent/paginate', {
+      const response = <ParentDataProps>await axiosGetRequest('/parent/paginate', {
         page: value,
       })
 
@@ -90,7 +90,7 @@ export const useParentData = () => {
       setResultFrom(((pageNumber - 1) * 2) + 1)
       setResultTo(((pageNumber - 1) === noOfPages) ? totalData : ((pageNumber - 1) * 2) + 2)
 
-      const response = await axiosGetRequest('/parent/paginate', {page: pageNumber - 1})
+      const response = <ParentDataProps>await axiosGetRequest('/parent/paginate', {page: pageNumber - 1})
 
       if (response.data) {
         setData(response?.data as ParentObject[])

@@ -33,7 +33,6 @@ const TableFooter = ({noOfPages, total, from, currentPage, onNext, to, onPreviou
                 onChange={enterPageNumber}
                 className={`flex h-10 w-16 rounded-md border border-ds-gray-300 px-3 py-1 font-extrabold text-black`}
               />
-              {/*{currentPage + 1}*/}
             </div>
             of {noOfPages}
           </p>

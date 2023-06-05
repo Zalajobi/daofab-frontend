@@ -26,3 +26,21 @@ export interface ParentRowData {
   total: ReactNode
   paid: ReactNode
 }
+
+// Child API response Data
+export type ChildResponseData = {
+  data: ChildData[];
+  length: number;
+  parent: ChildParentData;
+}
+export type ChildData = {
+  id: number;
+  paidAmount: number;
+  parentId: number;
+}
+export type ChildParentData = {
+  totalAmount: number;
+  receiver: string;
+  sender: string;
+  id: number;
+}
