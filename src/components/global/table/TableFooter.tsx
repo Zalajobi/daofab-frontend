@@ -1,6 +1,5 @@
-import { Fragment } from "react"
+import {ChangeEvent, Fragment} from "react"
 import { IoMdArrowDropleft, IoMdArrowDropright } from 'react-icons/io'
-import { InputNumber } from 'rsuite';
 
 interface TableFooterProps {
   noOfPages: number
@@ -10,7 +9,7 @@ interface TableFooterProps {
   currentPage: number
   onNext: (value:number) => void
   onPrevious: (value:number) => void
-  enterPageNumber: (value:number | string) => void
+  enterPageNumber: (value:ChangeEvent<HTMLInputElement>) => void
 }
 
 const TableFooter = ({noOfPages, total, from, currentPage, onNext, to, onPrevious, enterPageNumber}: TableFooterProps) => {
@@ -25,16 +24,16 @@ const TableFooter = ({noOfPages, total, from, currentPage, onNext, to, onPreviou
           <p className="flex flex-col items-center gap-2 font-velasans-gx text-sm font-medium text-custom-description dark:text-ds-dark-300 sm:flex-row lg:whitespace-nowrap">
             The page you are on
             <div style={{ maxWidth: 100 }}>
-              {/*<InputNumber*/}
-              {/*  value={currentPage + 1}*/}
-              {/*  className="flex h-10 w-12 rounded-md border border-ds-gray-300 px-3 py-1 text-end font-extrabold text-custom-primary-800 dark:border-ds-dark-400 dark:text-white items-center"*/}
-              {/*  // defaultValue={currentPage + 1}*/}
-              {/*  onChange={enterPageNumber}*/}
-              {/*  max={noOfPages}*/}
-              {/*  min={1}*/}
-              {/*  scrollable={false}*/}
-              {/*/>*/}
-              {currentPage + 1}
+              <input
+                type={`number`}
+                max={noOfPages}
+                min={1}
+                value={currentPage + 1}
+                step={`any`}
+                onChange={enterPageNumber}
+                className={`flex h-10 w-16 rounded-md border border-ds-gray-300 px-3 py-1 font-extrabold text-black`}
+              />
+              {/*{currentPage + 1}*/}
             </div>
             of {noOfPages}
           </p>

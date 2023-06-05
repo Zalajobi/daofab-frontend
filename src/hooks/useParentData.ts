@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {ChangeEvent, useEffect, useState} from "react";
 import toast from "react-hot-toast";
 import {useNavigate} from "react-router-dom";
 import {axiosGetRequest} from "../lib/axios";
@@ -25,6 +25,7 @@ export const useParentData = () => {
         setData(response?.data as ParentObject[])
         setTotalData(response.length)
         setResultFrom(((currentPage) * 2) + 1)
+        setResultTo((currentPage + 1 === noOfPages) ? totalData : ((currentPage) * 2) + 2)
       }
     }
 
@@ -75,7 +76,10 @@ export const useParentData = () => {
     }
   }
 
-  const onEnterPageNumber = async (value:number | string) => {
+  const onEnterPageNumber = async (event:ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value as unknown as number
+    console.log(value)
+
     if (value <= 0)
       toast.error("You are on the first page")
     else if (value > noOfPages)
