@@ -1,9 +1,16 @@
 import { Fragment } from "react";
+import {useParentData} from "../hooks/useParentData";
 
 const Parents = () => {
+  const { page } = useParentData()
+
   return (
     <Fragment>
-      <h1>HELLO</h1>
+      <div className={`flex w-full min-h-fit items-center justify-center bg-[#F9FAFB]`}>
+        <div className={`container w-full flex flex-col p-24`}>
+          <h1>HELLO WORLD</h1>
+        </div>
+      </div>
     </Fragment>
   )
 }
