@@ -5,6 +5,7 @@ import {ParentObject} from "../types";
 import Table from "../components/global/table/Table";
 import TableFooter from "../components/global/table/TableFooter";
 import { Toaster } from "react-hot-toast";
+import NoDataTable from "../components/global/table/NoDataTable";
 
 const Parents = () => {
   const {
@@ -34,7 +35,13 @@ const Parents = () => {
           <div
             className="relative overflow-x-auto overflow-y-auto max-h-screen shadow-lg flex flex-col rounded-lg border border-ds-gray-300 bg-white dark:border-ds-dark-400 dark:bg-ds-dark-700"
           >
-            <Table columns={tableColumns} data={tableRow}/>
+            {data?.length === 0 ? (
+              <>
+                <NoDataTable message={`No Paid Invoices`}/>
+              </>
+            ) : (
+              <Table columns={tableColumns} data={tableRow}/>
+            )}
 
             <div className={`bg-black`}>
               <TableFooter

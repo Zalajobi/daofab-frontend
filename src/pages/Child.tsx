@@ -3,6 +3,7 @@ import {useChildData} from "../hooks/useChildData";
 import {ChildData, ChildParentData, ParentObject} from "../types";
 import {ChildDataColumn, ChildDataRow} from "../components/table/ChildTable";
 import Table from "../components/global/table/Table";
+import NoDataTable from "../components/global/table/NoDataTable";
 
 const Child = () => {
   const {
@@ -26,7 +27,13 @@ const Child = () => {
           <div
             className="relative overflow-x-auto overflow-y-auto max-h-screen shadow-lg flex flex-col rounded-lg border border-ds-gray-300 bg-white dark:border-ds-dark-400 dark:bg-ds-dark-700"
           >
-            <Table columns={tableColumns} data={tableRow}/>
+            {data?.length === 0 ? (
+              <>
+                <NoDataTable message={`No Paid Invoices`}/>
+              </>
+            ) : (
+              <Table columns={tableColumns} data={tableRow}/>
+            )}
           </div>
         </div>
       </div>
